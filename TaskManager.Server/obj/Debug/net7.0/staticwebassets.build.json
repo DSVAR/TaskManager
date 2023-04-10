@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "uBWq1GHC0leHQCvJPVGczATVizcnh0EwJUmlIVSxT10=",
+  "Source": "TaskManager.Server",
+  "BasePath": "_content/TaskManager.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

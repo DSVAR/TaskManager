@@ -1,0 +1,12 @@
+D:\MauiTest\TaskManager\TaskManager.Shared\bin\Debug\net7.0\TaskManager.Shared.deps.json
+D:\MauiTest\TaskManager\TaskManager.Shared\bin\Debug\net7.0\TaskManager.Shared.dll
+D:\MauiTest\TaskManager\TaskManager.Shared\bin\Debug\net7.0\TaskManager.Shared.pdb
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.csproj.AssemblyReference.cache
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.AssemblyInfoInputs.cache
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.AssemblyInfo.cs
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.csproj.CoreCompileInputs.cache
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.dll
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\refint\TaskManager.Shared.dll
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\TaskManager.Shared.pdb
+D:\MauiTest\TaskManager\TaskManager.Shared\obj\Debug\net7.0\ref\TaskManager.Shared.dll
