@@ -22,6 +22,7 @@ public class TaskController: ControllerBase
         return  Ok("21");
     }
 
+    
     [HttpPost("Create")]
     public async Task<IActionResult> Create(UserTaskView model)
     {
@@ -40,6 +41,14 @@ public class TaskController: ControllerBase
     public async Task<IActionResult> Read()
     {
         return Ok(await TaskService.GetItems());
+    }
+    
+    
+    [HttpGet("GetNotification")]
+    public async Task<IActionResult> GetNotification()
+    {
+        var list = (await TaskService.GetItems()).Where(n=>n.WasView==false);
+        return Ok(list);
     }
     
     

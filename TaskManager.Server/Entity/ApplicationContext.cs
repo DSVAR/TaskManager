@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Shared.Models;
 
 namespace TaskManager.Server.Entity;
 
-public class ApplicationContext:DbContext
+public class ApplicationContext:IdentityDbContext<UserModel>
 {
     private DbSet<UserTask>? UserTasks { get; set; }
 
@@ -13,5 +15,6 @@ public class ApplicationContext:DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
     }
 }
