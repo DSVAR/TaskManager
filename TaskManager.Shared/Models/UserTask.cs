@@ -11,10 +11,10 @@ public class UserTask
     public bool IsComplete { get; set; }
     
     [ForeignKey("FromUserId")]
-    public Guid FromUserId { get; set; }
+    public string? FromUserId { get; set; }
     public virtual UserModel? FromUserIdKey { get; set; }
     [ForeignKey("MainUserId")]
-    public virtual Guid ToUserId { get; set; }
+    public string? ToUserId { get; set; }
     public virtual UserModel? ToUserIdKey { get; set; }
     
    

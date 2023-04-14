@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TaskManager.Server.Entity;
+using TaskManager.Shared;
 using TaskManager.Shared.Models;
 
 namespace TaskManager.Server.Services;
@@ -42,15 +43,27 @@ public class TaskService
             return default;
         }
     }
-
-    public async Task Update(UserTask obj)
+    public async Task<List<UserTask>> GetItemsById(string id)
     {
         try
         {
-            var founded = await DbSetUserTask.FindAsync(obj.Id);
+            return await DbSetUserTask.Where(o=>o.ToUserId==id).ToListAsync();
+            
+        }
+        catch (Exception e)
+        {
+            var sw = e.Message;
+            return default;
+        }
+    }
+
+    public async Task Update(UpdateTask obj)
+    {
+        try
+        {
+            var founded =  DbSetUserTask.FirstOrDefault(x=>x.Id.ToString()==obj.Id);
             if (founded is not null)
             {
-                founded.Text = obj.Text;
                 founded.IsComplete = obj.IsComplete;
                 Context.Update(founded);
                 await Context.SaveChangesAsync();

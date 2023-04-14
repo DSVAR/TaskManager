@@ -50,6 +50,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = TaskManager.Client.pages.N
 build_metadata.AdditionalFiles.TargetPath = pages\NotificationsView.xaml
 build_metadata.AdditionalFiles.RelativePath = pages\NotificationsView.xaml
 
+[D:/MauiTest/TaskManager/TaskManager.Client/pages/Tasks.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = TaskManager.Client.pages.Tasks.xaml
+build_metadata.AdditionalFiles.TargetPath = pages\Tasks.xaml
+build_metadata.AdditionalFiles.RelativePath = pages\Tasks.xaml
+
 [D:/MauiTest/TaskManager/TaskManager.Client/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = TaskManager.Client.Resources.Styles.Colors.xaml

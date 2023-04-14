@@ -5,9 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TaskManager.Client"
     xmlns:pagesView="clr-namespace:TaskManager.Client.pages"
+    
     Shell.FlyoutBehavior="Disabled">
-
-    <ShellContent x:Name="Entry"  Title="Entry" ContentTemplate="{DataTemplate pagesView:EnterPage}" Route="Entry"/>
+    
+    
+    <Shell.TitleView >
+      <StackLayout x:Name="stackLogout">
+          <Button Clicked="Logout" Text="Logout"></Button>
+      </StackLayout>
+    </Shell.TitleView>
+    
+    <ShellContent x:Name="Entry"  Title="Login" ContentTemplate="{DataTemplate pagesView:EnterPage}" Route="Login" />
     
     <TabBar Route="Main">
         <Tab Title="Create">
@@ -16,18 +24,20 @@
                 ContentTemplate="{DataTemplate pagesView:CreatePages}"
                 Route="CreatePage" />
         </Tab>
-        <Tab Title="Home">
+       
+        <Tab Title="Tasks">
             <ShellContent
-                Title="Home"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
+                Title="Tasks"
+                ContentTemplate="{DataTemplate pagesView:Tasks}"
+                Route="Tasks" />
         </Tab>
         <Tab Title="Notifications">
             <ShellContent
                 Title="Notifications"
                 ContentTemplate="{DataTemplate pagesView:NotificationsView}"
                 Route="Notifications" />
-        </Tab>
+        </Tab> 
+        
        
         
     </TabBar>

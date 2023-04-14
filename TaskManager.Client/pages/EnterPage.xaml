@@ -2,16 +2,19 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TaskManager.Client.ViewModel"
+             x:DataType="local:EnterViewModel"
              x:Class="TaskManager.Client.pages.EnterPage">
+  
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="10">
            
       
-            <Entry Margin="10" Placeholder = "login"  x:Name="Login"/>
+            <Entry Margin="10" Placeholder = "login"  x:Name="Login" Text="{Binding Login}"/>
          
-            <Entry Placeholder = "Password" IsPassword="True" Margin="10"  x:Name="Password"/>
+            <Entry Placeholder = "Password" IsPassword="True" Margin="10" Text="{Binding Password}"  x:Name="Password"/>
             
-            <Button Clicked="Auth" Text="Entry" WidthRequest="100" x:Name="Button"  />
+            <Button Command="{Binding AuthCommand}" Text="Entry" WidthRequest="100" x:Name="Button"  />
         </StackLayout>
         
     </ContentPage.Content>

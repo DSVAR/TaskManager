@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TaskManager.Client.ViewModel"
+             x:DataType="local:TaskViewModel"
+             x:Class="TaskManager.Client.pages.Tasks">
+    
+ 
+    
+    <RefreshView   IsRefreshing="{Binding IsRefreshing}"
+                  Command="{Binding Command}">
+        <ScrollView>
+       
+            <CollectionView   ItemsSource="{Binding TasksView }" >
+                <CollectionView.ItemTemplate >
+                    <DataTemplate >
+                        <Grid Padding="10" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                               
+                            <CheckBox Grid.Column="0"
+                                      Grid.Row="0"
+                                      IsChecked="{Binding IsComplete }"
+                                      CheckedChanged="ChangeCheckBox"
+                                      
+                                      AutomationId="{Binding Id}"
+                            />
+                            <Label 
+                                Grid.Column="1"
+                                Text="{Binding Text}"
+                                FontAttributes="None"
+                                VerticalOptions="Center">
+                            </Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                    
+            </CollectionView>
+        
+   
+        
+        </ScrollView>
+    </RefreshView>
+</ContentPage>

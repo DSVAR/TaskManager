@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using TaskManager.Server.Entity;
+using TaskManager.Shared.Models;
+using TaskManager.Shared.Models.ViewModels;
 
 namespace TaskManager.Server.Controllers;
 
@@ -12,9 +14,9 @@ namespace TaskManager.Server.Controllers;
 [ApiController]
 public class AuthController: ControllerBase
 {
-    private UserManager<IdentityUser> _userManager { get; set; }
+    private UserManager<UserModel> _userManager { get; set; }
 
-    public AuthController(UserManager<IdentityUser> userManager)
+    public AuthController(UserManager<UserModel> userManager)
     {
         _userManager = userManager;
     }
@@ -64,12 +66,61 @@ public class AuthController: ControllerBase
 
         return Ok();
     }
+    
+    [HttpPost("Enter")]
+    public async Task<IActionResult> AuthPost(EnterView model)
+    {
+        //  var s=UserManager.GetClaimsAsync()
+
+        try
+        {
+            var user = await _userManager.FindByNameAsync(model.Login!);
+            var result = await _userManager.CheckPasswordAsync(user!, model.Password!);
+
+            if (result)
+            {
+                var roles = await _userManager.GetRolesAsync(user!);
+                List<Claim> claims = new List<Claim>()
+                {
+                    new (ClaimTypes.Name, user!.UserName!),
+                };
+                foreach (var role in roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role));
+                }
+
+                var now = DateTime.Now;
+                var jwt = new JwtSecurityToken(
+                    issuer: AutOptions.ISSUER,
+                    audience: AutOptions.AUDIENCE,
+                    notBefore: now,
+                    claims: claims,
+                    expires: now.Add(TimeSpan.FromHours(AutOptions.LIFETIME)),
+                    signingCredentials: new SigningCredentials(
+                        AutOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                var encodeJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+                
+                return Ok(encodeJwt);
+            }
+            else
+            {
+                return BadRequest("Login or password incorrect");
+            }
+        }
+        catch (Exception ex)
+        {
+            return Ok(ex.Message);
+        }
+
+    }
 
    
     [HttpGet("Test")]
     [Authorize]
-    public IActionResult Test()
+    public async Task<IActionResult> Test()
     {
+        var user = HttpContext.User.Identity!.Name;
+        var foundUser =await _userManager.FindByNameAsync(user);
         return Ok("great");
     }
 }
